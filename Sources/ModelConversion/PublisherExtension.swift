@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 @available(iOS 13.0, *)
+@available(tvOS 13.0, *)
+@available(watchOS 6.0, *)
+@available(macOS 10.15, *)
 public extension Publisher where Output: ToApiModelConvertible {
     func toApiModel() -> AnyPublisher<Output.ApiModel, Failure> {
         compactMap(\.apiModel)
@@ -17,6 +20,9 @@ public extension Publisher where Output: ToApiModelConvertible {
 }
 
 @available(iOS 13.0, *)
+@available(tvOS 13.0, *)
+@available(watchOS 6.0, *)
+@available(macOS 10.15, *)
 public extension Publisher where Output: ToAppModelConvertible {
     func toAppModel() -> AnyPublisher<Output.AppModel, Failure> {
         compactMap(\.appModel)
