@@ -12,7 +12,7 @@ A Swift package used for model conversion inside an app.
 In your `Package.swift` Swift Package Manager manifest, add the following dependency to your dependencies argument:
 
 ```swift
-.package(url: "https://github.com/bpisano/model-conversion-swift-package.git"),
+.package(url: "https://github.com/bpisano/model-conversion.git"),
 ```
 
 Add the dependency to any targets you've declared in your manifest:
@@ -43,7 +43,7 @@ To convert models to each others, simply conforms these models to `ToPublicModel
 
 ```swift
 extension PublicUser: ToAppModelConvertible {
-    var appModel: User? {
+    var appModel: User {
         User(id: UUID(string: id), username: user_name)
     }
 }
@@ -51,7 +51,7 @@ extension PublicUser: ToAppModelConvertible {
 
 ```swift
 extension User: ToPublicModelConvertible {
-    var publicModel: PublicUser? {
+    var publicModel: PublicUser {
         PublicUser(id: id.uuidString, user_name: username)
     }
 }

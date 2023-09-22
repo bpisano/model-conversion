@@ -10,5 +10,5 @@ import Foundation
 public protocol ToPublicModelConvertible {
     associatedtype PublicModel
     
-    var publicModel: PublicModel? { get }
+    var publicModel: PublicModel { get }
 }

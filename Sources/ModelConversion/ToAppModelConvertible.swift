@@ -10,5 +10,5 @@ import Foundation
 public protocol ToAppModelConvertible {
     associatedtype AppModel
     
-    var appModel: AppModel? { get }
+    var appModel: AppModel { get }
 }

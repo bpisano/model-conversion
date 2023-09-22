@@ -9,12 +9,12 @@ import Foundation
 
 public extension Array where Element: ToPublicModelConvertible {
     var apiModels: [Element.PublicModel] {
-        compactMap(\.publicModel)
+        map(\.publicModel)
     }
 }
 
 public extension Array where Element: ToAppModelConvertible {
     var appModels: [Element.AppModel] {
-        compactMap(\.appModel)
+        map(\.appModel)
     }
 }

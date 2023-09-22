@@ -14,7 +14,7 @@ import Combine
 @available(macOS 10.15, *)
 public extension Publisher where Output: ToPublicModelConvertible {
     func toPublicModel() -> AnyPublisher<Output.PublicModel, Failure> {
-        compactMap(\.publicModel)
+        map(\.publicModel)
             .eraseToAnyPublisher()
     }
 }
@@ -25,7 +25,7 @@ public extension Publisher where Output: ToPublicModelConvertible {
 @available(macOS 10.15, *)
 public extension Publisher where Output: ToAppModelConvertible {
     func toAppModel() -> AnyPublisher<Output.AppModel, Failure> {
-        compactMap(\.appModel)
+        map(\.appModel)
             .eraseToAnyPublisher()
     }
 }
