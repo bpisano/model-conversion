@@ -7,9 +7,9 @@
 
 import Foundation
 
-public extension Array where Element: ToApiModelConvertible {
-    var apiModels: [Element.ApiModel] {
-        compactMap(\.apiModel)
+public extension Array where Element: ToPublicModelConvertible {
+    var apiModels: [Element.PublicModel] {
+        compactMap(\.publicModel)
     }
 }
 
