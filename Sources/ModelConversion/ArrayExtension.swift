@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Array where Element: ToPublicModelConvertible {
-    var apiModels: [Element.PublicModel] {
+    var publicModels: [Element.PublicModel] {
         map(\.publicModel)
     }
 }
