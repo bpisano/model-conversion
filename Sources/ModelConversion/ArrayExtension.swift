@@ -7,9 +7,9 @@
 
 import Foundation
 
-public extension Array where Element: ToPublicModelConvertible {
-    var publicModels: [Element.PublicModel] {
-        map(\.publicModel)
+public extension Array where Element: ToDtoConvertible {
+    var dtos: [Element.DtoModel] {
+        map(\.dto)
     }
 }
 
