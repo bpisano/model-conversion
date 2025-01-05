@@ -12,7 +12,7 @@ import Foundation
 @available(watchOS 11.0, *)
 @available(macOS 15.0, *)
 public extension AsyncSequence where Element: ToDtoConvertible {
-    var dtos: some AsyncSequence<Element.DtoModel, Failure> {
+    var dtos: AsyncMapSequence<Self, Element.DtoModel> {
         map { $0.dto }
     }
 }
@@ -22,7 +22,7 @@ public extension AsyncSequence where Element: ToDtoConvertible {
 @available(watchOS 11.0, *)
 @available(macOS 15.0, *)
 public extension AsyncSequence where Element: ToAppModelConvertible {
-    var appModels: some AsyncSequence<Element.AppModel, Failure> {
+    var appModels: AsyncMapSequence<Self, Element.AppModel> {
         map { $0.appModel }
     }
 }
