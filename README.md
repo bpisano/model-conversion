@@ -10,12 +10,6 @@ Add the following dependency to your Package.swift file:
 .package(url: "https://github.com/bpisano/model-conversion.git"),
 ```
 
-Add the dependency to any targets you've declared in your manifest:
-
-```swift
-.target(name: "MyTarget", dependencies: ["ModelConversion"]),
-```
-
 ## Usage
 
 Let's say you have a `UserDto` and a `User` model:
