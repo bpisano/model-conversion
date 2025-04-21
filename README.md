@@ -2,14 +2,9 @@
 
 A Swift package used for model conversion inside an app.
 
-# Table of contents
+## Installation
 
-1. [Installation](#installation)
-2. [Documentation](#documentation)
-
-# Installation
-
-In your `Package.swift` Swift Package Manager manifest, add the following dependency to your dependencies argument:
+Add the following dependency to your Package.swift file:
 
 ```swift
 .package(url: "https://github.com/bpisano/model-conversion.git"),
@@ -21,9 +16,9 @@ Add the dependency to any targets you've declared in your manifest:
 .target(name: "MyTarget", dependencies: ["ModelConversion"]),
 ```
 
-# Documentation
+## Usage
 
-Managing various services within an application can be challenging due to the diversity of service models involved. To streamline this process, consider creating distinct models for each service. This package is designed to assist you in this endeavor. For instance, in an application that interacts with an API to fetch user data, it's advisable to create separate models such as `UserDto` and `User`, each tailored to the specific requirements of their respective services.
+Let's say you have a `UserDto` and a `User` model:
 
 ```swift
 struct UserDto: Decodable {
@@ -42,6 +37,8 @@ struct User {
 To convert models to each others, simply conforms these models to `ToDtoConvertible` and `ToAppModelConvertible`.
 
 ```swift
+import ModelConversion
+
 extension UserDto: ToAppModelConvertible {
     var appModel: User {
         User(id: UUID(string: id), username: user_name)
@@ -50,6 +47,8 @@ extension UserDto: ToAppModelConvertible {
 ```
 
 ```swift
+import ModelConversion
+
 extension User: ToDtoConvertible {
     var dto: UserDto {
         UserDto(id: id.uuidString, user_name: username)
@@ -61,15 +60,14 @@ Additionally, this package offers extensions for `Arrays` and `Publishers` that 
 
 ```swift
 let userDtos: [UserDto] = [...]
-usersDto.appModels // Returns [User]
+usersDto.appModels // An array of User
 ```
 
 ```swift
-let user: User = // your user
+let userDto: UserDto = // your user dto
 Just(user)
-    .toDto()
-    .sink { userDto in
-        // Type of UserDto
+    .toAppModel()
+    .sink { user in
+        // Handle the converted user
     }
-}
 ```
