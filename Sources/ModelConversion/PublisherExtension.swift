@@ -5,6 +5,7 @@
 //  Created by Benjamin Pisano on 12/06/2022.
 //
 
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -29,3 +30,4 @@ public extension Publisher where Output: ToAppModelConvertible {
             .eraseToAnyPublisher()
     }
 }
+#endif
